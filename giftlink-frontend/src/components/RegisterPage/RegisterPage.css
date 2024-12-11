@@ -1,0 +1,56 @@
+.register-card {
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.register-card .form-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.register-card input {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.register-card .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    width: 100%;
+}
+
+.register-card .btn-primary {
+    background-color: #0056b3;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register-card .btn-primary:hover {
+    background-color: #004085;
+}
+
+.register-card .text-primary {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.register-card .text-primary:hover {
+    text-decoration: underline;
+}
+
+.register-card .text-secondary {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.register-card .text-secondary:hover {
+    text-decoration: underline;
+}
