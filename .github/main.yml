@@ -1,0 +1,53 @@
+name: 'CI/CD'
+
+on:
+  push:
+    branches: [master, main] # Trigger on pushes to these branches
+  pull_request:
+    branches: [master, main] # Trigger on pull requests targeting these branches
+
+jobs:
+  lint_js:
+    name: Lint JavaScript Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14 # Or a more recent LTS version like 16 or 18
+
+      - name: Install JSHint
+        run: npm install jshint --global # Or npm install jshint --save-dev locally and remove --global
+
+      - name: Run Linter
+        run: |
+          # This is the crucial part to modify!
+          find ./giftlink-backend -name app.js -exec jshint {} +
+          find ./giftlink-backend -name auth.js -exec jshint {} +
+          find ./giftlink-backend -name giftRoutes.js -exec jshint {} +
+          find ./giftlink-backend -name searchRoutes.js -exec jshint {} +
+          echo "Linted all the js files successfully"
+
+  client_build: # Optional: Only if you have a client-side build process
+    name: Build client
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14 # Or a more recent LTS version
+
+      - name: Run build
+        run: |
+          cd giftlink-frontend # Change to your client directory
+          npm install
+          npm run build # Or your build command (e.g., yarn build)
+          echo "Client-side build successfully"
